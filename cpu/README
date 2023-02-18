@@ -1,0 +1,36 @@
+DESCRIPTION:
+    four-bit harvard architecture cpu with 16 registers and 16 instructions
+
+ISA:
+    b0000: nop
+        - no operation
+    b0001: add
+        - add two registers: rx = rx + ry
+    b0010: sub
+        - subtract two registers: rx = rx - ry
+    b0011: and
+        - bitwise and two registers: rx = rx & ry
+    b0100: or
+        - bitwise or two registers: rx = rx | ry
+    b0101: xor
+        - bitwise xor two registers: rx = rx ^ ry
+    b0110: not
+        - bitwise not one register: rx = ~rx
+    b0111: lsl
+        - logical shift left one register: rx = rx << 1
+    b1000: lsr
+        - logical shift right one register: rx = rx >> 1
+    b1001: jmp
+        - jump to address in register: pc = rx
+    b1010: jz
+        - jump to address in register if zero flag is set: if (z) pc = rx
+    b1011: jnz
+        - jump to address in register if zero flag is not set: if (!z) pc = rx
+    b1100: jn
+        - jump to address in register if negative flag is set: if (n) pc = rx
+    b1101: jnn
+        - jump to address in register if negative flag is not set: if (!n) pc = rx
+    b1110: ld
+        - load register from memory: rx = mem[ry]
+    b1111: st
+        - store register to memory: mem[ry] = rx
