@@ -2,6 +2,7 @@ PROJECT = fourbeecpu
 
 SRC_DIR = cpu
 TARGET_DIR = target
+TEST_DIR = tests
 
 COMPILER = iverilog
 COMPILER_FLAGS =
@@ -9,17 +10,21 @@ COMPILER_FLAGS =
 SIMULATOR = vvp
 SIMULATOR_FLAGS =
 
-TARGET = $(TARGET_DIR)/$(PROJECT).vvp
-
+TESTS = $(wildcard $(TEST_DIR)/*.v)
+TARGETS = $(patsubst $(TEST_DIR)/%.v, $(TARGET_DIR)/%.vvp, $(TESTS))
 SRC = $(wildcard $(SRC_DIR)/*.v)
 
 all: compile simulate
 
 compile:
-	$(COMPILER) $(COMPILER_FLAGS) -o $(TARGET) $(SRC)
+	for test in $(TESTS); do \
+		$(COMPILER) $(COMPILER_FLAGS) -o $(TARGET_DIR)/$$(basename $$test .v).vvp $$test $(SRC); \
+	done
 
 simulate:
-	$(SIMULATOR) $(SIMULATOR_FLAGS) $(TARGET)
+	for target in $(TARGETS); do \
+		$(SIMULATOR) $(SIMULATOR_FLAGS) $$target; \
+	done
 
 clean:
 	rm -f $(TARGET_DIR)/*
