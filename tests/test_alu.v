@@ -1,18 +1,18 @@
 module alu_tb();
 
+    reg clk;
     reg [3:0] op;
     reg [3:0] rx;
     reg [3:0] ry;
-    reg [3:0] mem;
     wire [3:0] out;
     wire z;
     wire n;
 
     alu alu_inst(
+        .clk(clk),
         .op(op),
         .rx(rx),
         .ry(ry),
-        .mem(mem),
         .out(out),
         .z(z),
         .n(n)
@@ -20,13 +20,13 @@ module alu_tb();
 
     initial begin
         $display("ALU Testbench");
-        $display("op\trx\try\tmem\tout\tz\tn");
+        $display("op\trx\try\tout\tz\tn");
         $display("------------------------------------------------");
-        $monitor("%b\t%b\t%b\t%b\t%b\t%b\t%b", op, rx, ry, mem, out, z, n);
+        $monitor("%b\t%b\t%b\t%b\t%b\t%b", op, rx, ry, out, z, n);
+        clk = 0;
         op = 4'b0000;
         rx = 4'b0101;
         ry = 4'b0001;
-        mem = 4'b0000;
         #10;
         op = 4'b0001;
         #10;
@@ -60,5 +60,7 @@ module alu_tb();
         #10;
         $finish;
     end
+
+    always #5 clk = ~clk;
 
 endmodule

@@ -1,36 +1,36 @@
 DESCRIPTION:
-    four-bit harvard architecture cpu with 16 registers and 16 instructions
+    four-bit harvard architecture cpu with 16 instructions
 
 ISA:
-    b0000: nop
-        - no operation
-    b0001: add
+    b0000/h0: swp
+        - swap two registers: rx <-> ry
+    b0001/h1: add
         - add two registers: rx = rx + ry
-    b0010: sub
+    b0010/h2: sub
         - subtract two registers: rx = rx - ry
-    b0011: and
+    b0011/h3: and
         - bitwise and two registers: rx = rx & ry
-    b0100: or
+    b0100/h4: or
         - bitwise or two registers: rx = rx | ry
-    b0101: xor
-        - bitwise xor two registers: rx = rx ^ ry
-    b0110: not
+    b0101/h5: inc
+        - increment one register: rx = rx + 1
+    b0110/h6: not
         - bitwise not one register: rx = ~rx
-    b0111: lsl
+    b0111/h7: lsl
         - logical shift left one register: rx = rx << 1
-    b1000: lsr
+    b1000/h8: lsr
         - logical shift right one register: rx = rx >> 1
-    b1001: jmp
+    b1001/h9: jmp
         - jump to address in register: pc = rx
-    b1010: jz
+    b1010/hA: jz
         - jump to address in register if zero flag is set: if (z) pc = rx
-    b1011: jnz
+    b1011/hB: jnz
         - jump to address in register if zero flag is not set: if (!z) pc = rx
-    b1100: jn
+    b1100/hC: jn
         - jump to address in register if negative flag is set: if (n) pc = rx
-    b1101: jnn
+    b1101/hD: jnn
         - jump to address in register if negative flag is not set: if (!n) pc = rx
-    b1110: ld
+    b1110/hE: ld
         - load register from memory: rx = mem[ry]
-    b1111: st
+    b1111/hF: st
         - store register to memory: mem[ry] = rx

@@ -23,6 +23,8 @@ compile:
 
 simulate:
 	for target in $(TARGETS); do \
+		echo; \
+		echo "Running $$target:"; \
 		$(SIMULATOR) $(SIMULATOR_FLAGS) $$target; \
 	done
 
