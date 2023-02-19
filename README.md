@@ -1,5 +1,7 @@
-# fourbee cpu
-the fourbee cpu is a very simple 4-bit cpu
+# fourbee cpu 
+the fourbee cpu is a very simple 4-bit cpu powered by these tiny bees moving electrons around:
+
+![image](https://user-images.githubusercontent.com/30960626/219956219-bd5f3421-aed9-4af6-8dc9-36871252a7ee.png)
 
 ## architecture
 there are two registers on the cpu, which are hard referenced by the instructions. fourbee uses a harvard architecture (the program and instruction memory are split). the cpu can connect to a whopping 16 addresses of 4-bit program memory and 16 addresses of 4-bit instruction memory. 
