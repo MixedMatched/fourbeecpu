@@ -1,0 +1,4 @@
+swp
+st
+jmp
+sub

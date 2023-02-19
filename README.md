@@ -29,6 +29,9 @@ this cpu uses a custom instruction set architecture defined in the following tab
 
 the cpu has two flags, the zero flag and the negative flag. the zero flag is set if the result of the last operation was zero, and the negative flag is set if the result of the last operation was negative.
 
+## program
+you can turn bee-assembly into instruction hex files using asm/generate.py. it takes in an `in.asm` and emits an `out.hex`.
+
 ## simulating
 to build and simulate the cpu, you'll need to have make, iverilog, and vvp installed. you can compile the cpu with:
 ```
